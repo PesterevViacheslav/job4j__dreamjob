@@ -19,13 +19,12 @@ public class Post {
      * @param id ID
      * @param name Название
      * @param description Описание
-     * @param created Дата регистрации
      */
-    public Post(int id, String name, String description, Date created) {
+    public Post(int id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.created = created;
+        this.created = new Date();
     }
     /**
      * Method getId. Получение ID
