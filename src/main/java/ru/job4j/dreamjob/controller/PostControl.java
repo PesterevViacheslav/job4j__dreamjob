@@ -2,8 +2,13 @@ package ru.job4j.dreamjob.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import ru.job4j.dreamjob.model.Post;
 import ru.job4j.dreamjob.store.PostStore;
+
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Class PostStore - Контроллер вакансий. Решение задач уровня Middle.
  * 3.2. Web Тема : 3.2.2. Html, Bootstrap, Thymeleaf.
@@ -25,5 +30,10 @@ public class PostControl {
     public String addPost(Model model) {
         model.addAttribute("post", new Post(0, "Заполните поле", ""));
         return "addPost";
+    }
+    @PostMapping("/createPost")
+    public String createPost(@ModelAttribute Post post) {
+        store.add(post);
+        return "redirect:/posts";
     }
 }
