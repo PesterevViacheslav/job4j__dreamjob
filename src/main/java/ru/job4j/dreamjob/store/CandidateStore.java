@@ -16,9 +16,9 @@ public class CandidateStore {
     private static final CandidateStore INST = new CandidateStore();
     private final Map<Integer, Candidate> posts = new ConcurrentHashMap<>();
     private CandidateStore() {
-        posts.put(1, new Candidate(1, "Candidate 1", "dsc1"));
-        posts.put(2, new Candidate(2, "Candidate 2", "dsc2"));
-        posts.put(3, new Candidate(3, "Candidate 3", "dsc3"));
+        posts.put(0, new Candidate(0, "Candidate 1", "dsc1"));
+        posts.put(1, new Candidate(1, "Candidate 2", "dsc2"));
+        posts.put(2, new Candidate(2, "Candidate 3", "dsc3"));
     }
     public static CandidateStore instOf() {
         return INST;
