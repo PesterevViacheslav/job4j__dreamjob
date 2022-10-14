@@ -13,12 +13,13 @@ public class Candidate {
     private String name;
     private String description;
     private Date created;
-
-    public Candidate(int id, String name, String description) {
+    private City city;
+    public Candidate(int id, String name, String description, City city) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.created = new Date();
+        this.city = city;
     }
 
     public int getId() {
@@ -49,6 +50,14 @@ public class Candidate {
         return created;
     }
 
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
     public void setCreated(Date created) {
         this.created = created;
     }
@@ -62,7 +71,7 @@ public class Candidate {
             return false;
         }
         Candidate candidate = (Candidate) o;
-        return id == candidate.id && Objects.equals(name, candidate.name);
+        return id == candidate.id && Objects.equals(name, candidate.name) && Objects.equals(city, candidate.city);
     }
     @Override
     public int hashCode() {
@@ -71,7 +80,8 @@ public class Candidate {
     @Override
     public String toString() {
         return "Candidate{" + "id=" + id + ", name='" + name + '\''
-                +  ", description='" + description + '\'' + ", created='"
-                + created + '}';
+                +  ", description='" + description + '\''
+                + ", created='" + created + '\''
+                + ", city='" + city + '}';
     }
 }

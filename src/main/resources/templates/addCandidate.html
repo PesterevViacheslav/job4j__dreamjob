@@ -25,10 +25,18 @@
         Новый кандидат.
       </div>
       <div class="card-body">
-        <form>
+        <form th:action="@{/createCandidate}" method="POST">
           <div class="form-group">
-            <label>Имя
-              <input type="text" class="form-control">
+            <label for="name">Имя</label>
+            <input type="hidden" name="id" value="0"/>
+            <input type="text" class="form-control" name="name" id="name">
+            <input type="text" class="form-control" name="description" id="description">
+          </div>
+          <div class="form-group">
+            <label for="city.id">Город
+              <select class="form-control"  id="city.id" name="city.id" >
+                <option th:each="city : ${cities}" th:value="${city.id}" th:text="${city.name}"></option>
+              </select>
             </label>
           </div>
           <button type="submit" class="btn btn-primary">Сохранить</button>

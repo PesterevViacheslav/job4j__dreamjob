@@ -16,18 +16,20 @@ public class Post implements Serializable {
     private String description;
     private Date created;
     private boolean visible;
+    private City city;
     /**
      * Method Post. Конструктор
      * @param id ID
      * @param name Название
      * @param description Описание
      */
-    public Post(int id, String name, String description) {
+    public Post(int id, String name, String description, City city) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.created = new Date();
         this.visible = false;
+        this.city = city;
     }
     /**
      * Method getId. Получение ID
@@ -91,10 +93,16 @@ public class Post implements Serializable {
     public void setVisible(boolean visible) {
         this.visible = visible;
     }
+    public City getCity() {
+        return city;
+    }
+    public void setCity(City city) {
+        this.city = city;
+    }
     @Override
     public String toString() {
         return "Post{" + "id=" + id + ", name='" + name + '\''
-                + ", description='" + description + '\'' + ", created=" + created + '}';
+                + ", description='" + description + '\'' + ", created=" + created + ", city=" + city + '}';
     }
     @Override
     public boolean equals(Object o) {
@@ -107,7 +115,8 @@ public class Post implements Serializable {
         Post post = (Post) o;
         return id == post.id && Objects.equals(name, post.name)
                 && Objects.equals(description, post.description)
-                && Objects.equals(created, post.created);
+                && Objects.equals(created, post.created)
+                && Objects.equals(city, post.city);
     }
     @Override
     public int hashCode() {

@@ -1,6 +1,7 @@
 package ru.job4j.dreamjob.store;
 import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Repository;
+import ru.job4j.dreamjob.model.City;
 import ru.job4j.dreamjob.model.Post;
 import java.util.Collection;
 import java.util.Map;
@@ -19,11 +20,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 @ThreadSafe
 public class PostStore {
     private final Map<Integer, Post> posts = new ConcurrentHashMap<>();
-    private final AtomicInteger ids = new AtomicInteger(4);
+    private final AtomicInteger ids = new AtomicInteger(2);
     private PostStore() {
-        posts.put(0, new Post(0, "Junior Java Job", "dsc1"));
-        posts.put(1, new Post(1, "Middle Java Job", "dsc2"));
-        posts.put(2, new Post(2, "Senior Java Job", "dsc3"));
+        posts.put(0, new Post(0, "Junior Java Job", "dsc1", new City(0, "City1")));
+        posts.put(1, new Post(1, "Middle Java Job", "dsc2", new City(1, "City2")));
+        posts.put(2, new Post(2, "Senior Java Job", "dsc3", new City(2, "City3")));
     }
     public Collection<Post> findAll() {
         return posts.values();
