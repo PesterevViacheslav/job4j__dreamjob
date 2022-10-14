@@ -1,9 +1,9 @@
 package ru.job4j.dreamjob.store;
+import net.jcip.annotations.ThreadSafe;
 import ru.job4j.dreamjob.model.Candidate;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.Date;
 /**
  * Class CandidateStore - Хранилище кандидатов. Решение задач уровня Middle.
  * 3.2. Web Тема : 3.2.2. Html, Bootstrap, Thymeleaf.
@@ -12,6 +12,7 @@ import java.util.Date;
  * @since 01.10.2022
  * @version 1
  */
+@ThreadSafe
 public class CandidateStore {
     private static final CandidateStore INST = new CandidateStore();
     private final Map<Integer, Candidate> candidates = new ConcurrentHashMap<>();

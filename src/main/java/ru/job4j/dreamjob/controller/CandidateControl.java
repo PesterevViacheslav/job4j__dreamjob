@@ -1,4 +1,5 @@
 package ru.job4j.dreamjob.controller;
+import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,7 +7,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.job4j.dreamjob.model.Candidate;
-import ru.job4j.dreamjob.model.Post;
 import ru.job4j.dreamjob.store.CandidateStore;
 /**
  * Class CandidateControl - Контроллер кандидатов. Решение задач уровня Middle.
@@ -17,6 +17,7 @@ import ru.job4j.dreamjob.store.CandidateStore;
  * @version 1
  */
 @Controller
+@ThreadSafe
 public class CandidateControl {
     private final CandidateStore store = CandidateStore.instOf();
 
