@@ -1,4 +1,5 @@
 package ru.job4j.dreamjob.model;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 /**
@@ -9,11 +10,12 @@ import java.util.Objects;
  * @since 01.10.2022
  * @version 1
  */
-public class Post {
+public class Post implements Serializable {
     private int id;
     private String name;
     private String description;
     private Date created;
+    private boolean visible;
     /**
      * Method Post. Конструктор
      * @param id ID
@@ -25,6 +27,7 @@ public class Post {
         this.name = name;
         this.description = description;
         this.created = new Date();
+        this.visible = false;
     }
     /**
      * Method getId. Получение ID
@@ -81,6 +84,12 @@ public class Post {
      */
     public void setCreated(Date created) {
         this.created = created;
+    }
+    public boolean isVisible() {
+        return this.visible;
+    }
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
     @Override
     public String toString() {
