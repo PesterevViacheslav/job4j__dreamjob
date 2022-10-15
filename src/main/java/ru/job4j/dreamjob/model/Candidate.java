@@ -14,6 +14,7 @@ public class Candidate {
     private String description;
     private Date created;
     private City city;
+    private byte[] photo;
     public Candidate(int id, String name, String description, City city) {
         this.id = id;
         this.name = name;
@@ -58,6 +59,13 @@ public class Candidate {
         this.city = city;
     }
 
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
+    }
     public void setCreated(Date created) {
         this.created = created;
     }
