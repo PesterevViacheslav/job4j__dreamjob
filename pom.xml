@@ -32,7 +32,7 @@
                 <db.driver>org.h2.Driver</db.driver>
             </properties>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
         <profile>
@@ -44,7 +44,7 @@
                 <db.driver>org.postgresql.Driver</db.driver>
             </properties>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
         </profile>
     </profiles>

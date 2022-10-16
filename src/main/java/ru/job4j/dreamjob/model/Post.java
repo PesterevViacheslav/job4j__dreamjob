@@ -115,7 +115,6 @@ public class Post implements Serializable {
         Post post = (Post) o;
         return id == post.id && Objects.equals(name, post.name)
                 && Objects.equals(description, post.description)
-                && Objects.equals(created, post.created)
                 && Objects.equals(city, post.city);
     }
     @Override
