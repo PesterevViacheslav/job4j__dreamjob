@@ -13,6 +13,5 @@ CREATE TABLE IF NOT EXISTS candidate (
      description TEXT,
      photo       BYTEA,
      created     TIMESTAMP default current_timestamp,
-     visible     boolean,
      city_id     int
 );

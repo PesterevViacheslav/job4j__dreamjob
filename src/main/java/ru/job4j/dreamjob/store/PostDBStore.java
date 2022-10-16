@@ -101,4 +101,13 @@ public class PostDBStore {
         }
         return null;
     }
+    public void clearTable() {
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("DELETE FROM post")
+        ) {
+            ps.execute();
+        } catch (Exception e) {
+            LOG.error("clearTable", e);
+        }
+    }
 }
