@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ru.job4j.dreamjob.model.Candidate;
 import ru.job4j.dreamjob.model.City;
+import ru.job4j.dreamjob.model.User;
 import ru.job4j.dreamjob.service.CandidateService;
 import ru.job4j.dreamjob.service.CityService;
 import java.io.IOException;
@@ -14,6 +15,9 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+
+import javax.servlet.http.HttpSession;
+
 /**
  * Class CandidateControl - Контроллер кандидатов. Решение задач уровня Middle.
  * 3.2. Web Тема : 3.2.2. Html, Bootstrap, Thymeleaf.
@@ -33,14 +37,26 @@ public class CandidateControl {
     }
 
     @GetMapping("/candidates")
-    public String candidates(Model model) {
+    public String candidates(Model model, HttpSession session) {
         model.addAttribute("candidates", candidateService.findAll());
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            user = new User();
+            user.setName("Гость");
+        }
+        model.addAttribute("user", user);
         return "candidates";
     }
     @GetMapping("/formAddCandidate")
-    public String addCandidate(Model model) {
+    public String addCandidate(Model model, HttpSession session) {
         model.addAttribute("candidate", new Candidate(0, "Заполните поле", "", new City()));
         model.addAttribute("cities", cityService.getAllCities());
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            user = new User();
+            user.setName("Гость");
+        }
+        model.addAttribute("user", user);
         return "addCandidate";
     }
     @PostMapping("/createCandidate")
@@ -61,11 +77,18 @@ public class CandidateControl {
     }
     @GetMapping("/formUpdateCandidate/{candidateId}")
     public String formUpdateCandidate(Model model,
+                                      HttpSession session,
                                       @PathVariable("candidateId") int id) {
         Candidate candidate = candidateService.findById(id);
         candidate.setCity(cityService.findById(candidate.getCity().getId()));
         model.addAttribute("candidate", candidate);
         model.addAttribute("cities", cityService.getAllCities());
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            user = new User();
+            user.setName("Гость");
+        }
+        model.addAttribute("user", user);
         return "updateCandidate";
     }
     @GetMapping("/photoCandidate/{candidateId}")
